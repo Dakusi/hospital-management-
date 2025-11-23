@@ -1,0 +1,112 @@
+/* Reset and base styles */
+37
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'Arial', sans-serif;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: #333;
+line-height: 1.6;
+padding: 20px;
+}
+.container {
+max-width: 800px;
+margin: 0 auto;
+background: white;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+overflow: hidden;
+animation: fadeIn 1s ease-in-out;
+}
+38
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+header {
+background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+color: white;
+text-align: center;
+padding: 40px 20px;
+}
+header h1 {
+font-size: 2.5em;
+margin-bottom: 10px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+header p {
+font-size: 1.2em;
+opacity: 0.9;
+}
+form {
+padding: 40px;
+}
+.form-group {
+margin-bottom: 25px;
+39
+}
+label {
+display: block;
+margin-bottom: 8px;
+font-weight: bold;
+color: #555;
+font-size: 1.1em;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+width: 100%;
+padding: 12px 15px;
+border: 2px solid #ddd;
+border-radius: 8px;
+font-size: 1em;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:focus,
+select:focus,
+40
+textarea:focus {
+outline: none;
+border-color: #667eea;
+box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+textarea {
+height: 120px;
+resize: vertical;
+}
+select {
+background-color: white;
+cursor: pointer;
+}
+.submit-btn {
+background: linear-gradient(135deg, #667eea, #764ba2);
+color: white;
+padding
+}
+// Simple client-side validation and age calculation
+document.getElementById('dateOfBirth').addEventListener('change', function() {
+const dob = new Date(this.value);
+const today = new Date();
+let age = today.getFullYear() - dob.getFullYear();
+const monthDiff = today.getMonth() - dob.getMonth();
+41
+if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+age--;
+}
+if (age < 18) {
+alert('You must be at least 18 years old to apply as a candidate.');
+this.value = '';
+}
+});
+// Form submission handler (for demo; in real app, send to server)
+document.getElementById('candidateForm').addEventListener('submit', function(e) {
+e.preventDefault();
+alert('Thank you for your application! It has been submitted for review.');
+});
